@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe MultiTaskController, type: :controller do
+RSpec.describe MultiTasksController, type: :controller do
   let(:task) { double }
 
   describe "GET #new" do
@@ -32,7 +32,7 @@ RSpec.describe MultiTaskController, type: :controller do
       allow(task).to receive(:frequency).and_return(1)
       allow(task).to receive(:update).and_return(true)
 
-      patch 'update', { params: { id: 1, task:  { frequency: 1 } } }
+      patch 'update', { params: { id: 1, multi_task:  { frequency: 1 } } }
 
       expect(task.frequency).to eq(1)
       expect(flash[:notice]).to eq('Tarefa foi atualizada com sucesso.')
@@ -45,7 +45,7 @@ RSpec.describe MultiTaskController, type: :controller do
       allow(task).to receive(:frequency).and_return(0)
       allow(task).to receive(:update).and_return(false)
 
-      patch 'update', { params: { id: 1, task:  { frequency: 1 } } }
+      patch 'update', { params: { id: 1, multi_task:  { frequency: 1 } } }
 
       expect(task.frequency).to_not eq(1)
       expect(response).to render_template(:edit)

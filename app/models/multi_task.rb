@@ -5,6 +5,7 @@ class MultiTask
   validates_presence_of :start_date
   validates_presence_of :description
 
+  field :title, type: String, default: ""
   field :start_date, type: Time
   field :end_date, type: Time
   field :description, type: String

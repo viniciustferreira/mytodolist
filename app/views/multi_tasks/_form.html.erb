@@ -1,0 +1,58 @@
+<%= form_for(@task) do |f| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> Não é possível salvar essa tarefa:</h2>
+       <ul>
+         <% @task.errors.full_messages.each do |message| %>
+           <li><%= message %></li>
+         <% end %>
+       </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start_date %><br>
+    <%= f.date_select :start_date, order: [:day, :month, :year] %>
+  </div>
+
+  <div class="field">
+    <%= f.label :end_date %><br>
+    <%= f.date_select :end_date, order: [:day, :month, :year]%>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :priority %><br>
+    <%= f.number_field :priority, min: 1, max: 10 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :frequency %><br>
+    <%= f.select :frequency, { '1 dia': 1, 'diariamente': 99  } %>
+  </div>
+  <br>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script>
+$("#button_new_task").click( function() {
+  var $div = $('div[id^="multi_task"]:last');
+  var num = parseInt( $div.prop("id").match(/\d+/g), 10 ) +1;
+  if(num < 3) 
+    {
+      $div.after($("div[id^='multi_task']:first").clone().prop('id', 'address'+num ).wrap('<div/>').parent().html());
+    }
+  })
+</script>

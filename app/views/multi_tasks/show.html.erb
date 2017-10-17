@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Título:</strong>
+    <%= @task.title %>
+</p>
+
+<p>
+  <strong>Data de início:</strong>
+    <%= @task.start_date %>
+</p>
+
+<p>
+  <strong>Data de finalização:</strong>
+    <%= @task.end_date %>
+</p>
+
+<p>
+  <strong>Descrição:</strong>
+    <%= @task.description %>
+</p>
+
+<p>
+  <strong>Prioridade:</strong>
+    <%= @task.priority %>
+</p>
+
+<p>
+  <strong>Frequencia:</strong>
+    <%= @task.frequency %>
+</p>
+
+<%= link_to 'Editar', edit_multi_task_path(@task) %> |
+<%= link_to 'Voltar', multi_task_path %>
