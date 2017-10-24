@@ -1,5 +1,6 @@
 class MultiTasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :possible_parents, only: [:new]
 
   def new
     @task = MultiTask.new
@@ -51,6 +52,10 @@ class MultiTasksController < ApplicationController
   end
 
   private
+
+  def possible_parents
+    @parents = MultiTask.where(parent: "").map { |p| [p.description, p.id.to_s] } || [] 
+  end
 
   def set_task
     @task = MultiTask.find(params[:id])

@@ -41,6 +41,12 @@
   </div>
   <br>
 
+  <div class="field">
+    <%= f.label :parent %><br>
+    <%= f.select :parent, options_for_select(@parents), {include_blank: true, multiple: true, size: 10} %>
+  </div>
+  <br>
+
   <div class="actions">
     <%= f.submit %>
   </div>
