@@ -7,7 +7,7 @@ RSpec.describe MultiTask, type: :model do
       end_date:   Time.now + 10*60,
       description: "teste",
       priority: 10,
-      frequency: 1 
+      frequency: 1
     }
   end
 

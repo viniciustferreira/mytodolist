@@ -54,7 +54,7 @@ class MultiTasksController < ApplicationController
   private
 
   def possible_parents
-    @parents = MultiTask.where(parent: "").map { |p| [p.description, p.id.to_s] } || [] 
+    @parents = MultiTask.where(parent: "").map { |p| [p.description, p.id.to_s] } || []
   end
 
   def set_task
