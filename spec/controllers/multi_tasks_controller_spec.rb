@@ -35,7 +35,7 @@ RSpec.describe MultiTasksController, type: :controller do
       patch 'update', { params: { id: 1, multi_task:  { frequency: 1 } } }
 
       expect(task.frequency).to eq(1)
-      expect(flash[:notice]).to eq('Tarefa foi atualizada com sucesso.')
+      expect(flash[:notice]).to eq('Tarefa atualizada com sucesso.')
     end
 
     it "fails to update a task" do

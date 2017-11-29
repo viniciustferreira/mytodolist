@@ -1,6 +1,6 @@
 class MultiTasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :possible_parents, only: [:new]
+  before_action :possible_parents, only: [:new, :edit]
 
   def new
     @task = MultiTask.new
@@ -27,7 +27,7 @@ class MultiTasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to multi_task_path(@task) , notice: 'Tarefa foi atualizada com sucesso.' }
+        format.html { redirect_to multi_task_path(@task) , notice: 'Tarefa atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }
