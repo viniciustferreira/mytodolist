@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+MyTodoList
 
-Things you may want to cover:
+Is a project that creates a to-do list with tasks and subtasks.
+It belongs to my portfolio and its made to learning and training habilities importants for my carreer:
+  -Rails 5
+  -Capybara
+  -MongoDB
+  -Asynchronous features with Ruby
+  -SOLID
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Road-map:
+  -TESTS - ok
+  -CRUD - ok
+  -Sidekiq to send emails of scheduled tasks.
+  -Authentication with Devise.
+  -Create a UX certified interface to the users using Angular2.
+  -Deploy on AWS.
+  
+ Its not ready and i take sugestions.  
