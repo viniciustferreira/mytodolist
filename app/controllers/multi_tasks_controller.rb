@@ -63,7 +63,7 @@ class MultiTasksController < ApplicationController
 
   def task_params
     format_params_dates
-    params.require(:multi_task).permit(:start_date,
+    params.require(:multi_task).permit(:title, :start_date,
       :end_date, :description, :finished, :priority, :frequency, :parent)
   end
 
