@@ -17,8 +17,8 @@
     <% @tasks.each do |task| %>
       <tr>
         <td><%= form_for(task) do |f| %>
-          <%= f.check_box :finished %> 
-        <% end %></td>  
+          <%= f.check_box :finished %>
+        <% end %></td>
         <td><%= task.description %></td>
         <td><%= task.start_date %></td>
         <td><%= task.end_date %></td>
