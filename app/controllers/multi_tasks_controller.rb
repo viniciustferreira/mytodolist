@@ -46,7 +46,7 @@ class MultiTasksController < ApplicationController
     @task.destroy
 
     respond_to do |format|
-      format.html { redirect_to multi_task_url, notice: 'A tarefa foi removida com sucesso.' }
+      format.html { redirect_to multi_tasks_url, notice: 'A tarefa foi removida com sucesso.' }
       format.json { head :no_content }
     end
   end
