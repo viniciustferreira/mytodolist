@@ -17,4 +17,12 @@ class MultiTask
     return nil if parent.nil?
     MultiTask.find(parent)
   end
+
+  def formatted_start_date
+    start_date.to_date.strftime("%d/%m/%Y")
+  end
+
+  def formatted_end_date
+    end_date.to_date.strftime("%d/%m/%Y")
+  end
 end
