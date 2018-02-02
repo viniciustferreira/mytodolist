@@ -14,18 +14,19 @@
   </thead>
 
   <tbody>
-    <% @tasks.each do |task| %>
+    <% @multitasks.each do |multitask| %>
       <tr>
-        <td><%= form_for(task) do |f| %>
-          <%= f.check_box :finished %>
-        <% end %></td>
-        <td><%= task.description %></td>
-        <td><%= task.formatted_start_date %></td>
-        <td><%= task.formatted_end_date %></td>
-        <td><%= link_to 'Mostrar tarefa', task %></td>
-        <td><%= link_to 'Editar tarefa', edit_multi_task_path(task) %></td>
-        <td><%= link_to 'Deletar tarefa', task, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+        <%= render partial: 'task', locals: { task: multitask[:task] }  %>
+        <td><%= button_to 'Abrir Sub-tarefas' %></td>
       </tr>
+      <% if !multitask[:subtasks].empty? %>
+        <td>Sub-tasks:</td>
+        <% multitask[:subtasks].each do |subtask| %>
+          <tr>
+            <%= render partial: 'task', locals: { task: subtask }  %>
+          </tr>
+        <% end %>
+      <% end %>
     <% end %>
   </tbody>
 </table>

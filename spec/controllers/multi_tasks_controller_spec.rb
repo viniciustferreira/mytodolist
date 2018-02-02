@@ -11,16 +11,22 @@ RSpec.describe MultiTasksController, type: :controller do
   end
 
   describe "GET #index" do
-    let(:task1) { double }
-    let(:task2) { double }
+    let(:tasks) { [double] }
+    let(:subtasks) { [double] }
+    let(:multitasks) {{ task: [double], subtasks: [double] }}
 
     it "returns all tasks" do
-      allow(MultiTask).to receive(:all)
-        .and_return([task1, task2])
+      allow(MultiTask).to receive(:where).with(parent: "")
+        .and_return(tasks)
+
+      allow(MultiTask).to receive(:where).with(:parent.ne => '')
+        .and_return(subtasks)
+
+      allow(tasks).to receive(:map).and_return(multitasks)
 
       get 'index'
 
-      expect(assigns(:tasks).size).to be(2)
+      expect(assigns(:multitasks)).to eq(multitasks)
     end
   end
 
@@ -82,7 +88,7 @@ RSpec.describe MultiTasksController, type: :controller do
 
       delete 'destroy', { params: { id: 1 } }
       expect(task).to be_destroyed
-      expect(response).to redirect_to(:multi_task)
+      expect(response).to redirect_to(:multi_tasks)
     end
   end
 end

@@ -7,7 +7,11 @@ class MultiTasksController < ApplicationController
   end
 
   def index
-    @tasks = MultiTask.all
+    @tasks    = MultiTask.where(parent: "")
+    @subtasks = MultiTask.where(:parent.ne => '')
+    @multitasks = @tasks.map do |task|
+      { task: task, subtasks: @subtasks.select { |sub| sub.parent == task.id.to_s  } }
+    end
   end
 
   def create
