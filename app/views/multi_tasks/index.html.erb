@@ -2,7 +2,13 @@
 
 <h1>Tarefas</h1>
 
-<table>
+<div id="testing"></div>
+
+<div class="col-2">
+  <%= link_to 'Nova tarefa', new_multi_task_path, class: "btn btn-primary active" %>
+</div>
+</br>
+<table class="table">
   <thead>
     <tr>
       <th>Finalizado?</th>
@@ -17,19 +23,19 @@
     <% @multitasks.each do |multitask| %>
       <tr>
         <%= render partial: 'task', locals: { task: multitask[:task] }  %>
-        <td><%= button_to 'Abrir Sub-tarefas' %></td>
+        <td><%= button_to 'Abrir Sub-tarefas', id: multitask[:task].id.to_s %></td>
       </tr>
       <% if !multitask[:subtasks].empty? %>
-        <td>Sub-tasks:</td>
-        <% multitask[:subtasks].each do |subtask| %>
-          <tr>
-            <%= render partial: 'task', locals: { task: subtask }  %>
-          </tr>
-        <% end %>
+          <th>Sub-tasks:</th>
+          <% multitask[:subtasks].each do |subtask| %>
+            <tr id=<%= multitask[:task].id.to_s %> >
+              <%= render partial: 'task', locals: { task: subtask }  %>
+            </tr>
+          <% end %>
       <% end %>
     <% end %>
   </tbody>
 </table>
 <br>
 
-<%= link_to 'Nova tarefa', new_multi_task_path %>
+
