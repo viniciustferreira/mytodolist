@@ -1,34 +1,26 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Título:</strong>
-    <%= @task.title %>
-</p>
-
-<p>
-  <strong>Data de início:</strong>
-    <%= @task.start_date %>
-</p>
-
-<p>
-  <strong>Data de finalização:</strong>
-    <%= @task.end_date %>
-</p>
-
-<p>
-  <strong>Descrição:</strong>
-    <%= @task.description %>
-</p>
-
-<p>
-  <strong>Prioridade:</strong>
-    <%= @task.priority %>
-</p>
-
-<p>
-  <strong>Frequencia:</strong>
-    <%= @task.frequency %>
-</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Descrição</th>
+      <th>Data de inicio</th>
+      <th>Data de fim</th>
+      <th>Prioridade</th>
+      <th>Frequencia</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @task.title %></td>
+      <td><%= @task.description %></td>
+      <td><%= @task.formatted_start_date %></td>
+      <td><%= @task.formatted_end_date %></td>
+      <td><%= @task.priority %></td>
+      <td><%= @task.frequency %></td>
+    </tr>
+  </tbody>
+</table>
 
 <%= link_to 'Editar', edit_multi_task_path(@task) %> |
 <%= link_to 'Voltar', multi_tasks_path %>
