@@ -8,34 +8,35 @@
   <%= link_to 'Nova tarefa', new_multi_task_path, class: "btn btn-primary active" %>
 </div>
 </br>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Finalizado?</th>
-      <th>Descrição</th>
-      <th>Data de inicio</th>
-      <th>Data de fim</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @multitasks.each do |multitask| %>
+<div class="card">
+  <table class="table">
+    <thead>
       <tr>
-        <%= render partial: 'task', locals: { task: multitask[:task] }  %>
-        <td><%= button_to 'Abrir Sub-tarefas', id: multitask[:task].id.to_s %></td>
+        <th>Finalizado?</th>
+        <th>Descrição</th>
+        <th>Data de inicio</th>
+        <th>Data de fim</th>
+        <th colspan="3"></th>
       </tr>
-      <% if !multitask[:subtasks].empty? %>
-          <th>Sub-tasks:</th>
-          <% multitask[:subtasks].each do |subtask| %>
-            <tr id=<%= multitask[:task].id.to_s %> >
-              <%= render partial: 'task', locals: { task: subtask }  %>
-            </tr>
-          <% end %>
+    </thead>
+
+    <tbody>
+      <% @multitasks.each do |multitask| %>
+        <tr>
+          <%= render partial: 'task', locals: { task: multitask[:task] }  %>
+          <td><%= button_to 'Abrir Sub-tarefas', id: multitask[:task].id.to_s %></td>
+        </tr>
+        <% if !multitask[:subtasks].empty? %>
+            <div class="card">
+              <th>Sub-tasks:</th>
+              <% multitask[:subtasks].each do |subtask| %>
+                <tr id=<%= multitask[:task].id.to_s %> >
+                  <%= render partial: 'task', locals: { task: subtask }  %>
+                </tr>
+              <% end %>
+            </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </tbody>
-</table>
-<br>
-
-
+    </tbody>
+  </table>
+</div>

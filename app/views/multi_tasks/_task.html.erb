@@ -4,6 +4,4 @@
   <td><%= task.description %></td>
   <td><%= task.formatted_start_date %></td>
   <td><%= task.formatted_end_date %></td>
-  <td><%= link_to 'Detalhes', task %></td>
-  <td><%= link_to 'Editar', edit_multi_task_path(task) %></td>
-  <td><%= link_to 'Excluir', task, method: :delete, data: { confirm: 'Excluir: Tem certeza?' } %></td>
+  <td><%= options(task) %></td>
