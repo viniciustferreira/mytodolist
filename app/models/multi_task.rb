@@ -13,6 +13,10 @@ class MultiTask
   field :frequency, type: Integer, default: 999
   field :parent, type: String, default: ""
 
+  def subtasks
+    MultiTask.where(parent: id)
+  end
+
   def parent_task
     return nil if parent.nil?
     MultiTask.find(parent)

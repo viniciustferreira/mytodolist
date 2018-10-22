@@ -7,10 +7,23 @@ class MultiTasksController < ApplicationController
   end
 
   def index
-    @tasks    = MultiTask.where(parent: "")
-    @subtasks = MultiTask.where(:parent.ne => '')
-    @multitasks = @tasks.map do |task|
-      { task: task, subtasks: @subtasks.select { |sub| sub.parent == task.id.to_s  } }
+    @multitasks = MultiTask.where(parent: "")
+    @subtasks   = MultiTask.where(:parent.ne => '')
+
+    # @multitasks = @tasks.map do |task|
+    #   { task: task, subtasks: @subtasks.select { |sub| sub.parent == task.id.to_s || nil  } }
+    # end
+    respond_to do |format|
+      format.js { render :index }
+      format.html
+    end
+  end
+
+  def sub_tasks
+    @multitask = MultiTask.find(params[:multi_task_id])
+
+    respond_to do |format|
+      format.js
     end
   end
 
