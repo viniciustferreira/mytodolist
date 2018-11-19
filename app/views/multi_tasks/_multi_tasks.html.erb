@@ -1,33 +1,39 @@
-  <div class="card">
-    <div class="card-body">
-      <h1 class="card-title">Tarefas</h1>
-      <div class="col-2">
-        <%= link_to 'Nova tarefa', new_multi_task_path, class: "btn btn-primary active" %>
+  <div class="modal" id="sub-task-modal">
+    <div class="modal-dialog modal-lg" >
+      <div class="modal-content" >
+        <div class="card">
+          <div class="card-body">
+            <h1 class="card-title">Tarefas</h1>
+            <div class="col-2">
+              <%= link_to 'Nova tarefa', new_multi_task_path, class: "btn btn-primary active" %>
+            </div>
+            </br>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Finalizado?</th>
+                  <th>Descrição</th>
+                  <th>Data de inicio</th>
+                  <th>Data de fim</th>
+                  <th colspan="3"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @multitasks.each do |task| %>
+                    <tr id=<%= "sub_task"+task.id.to_s %> class=<%= "sub_task"+task.id.to_s %> >
+                      <td><%= form_for(task) do |f| %>
+                        <%= f.check_box :finished %>
+                      <% end %></td>
+                      <td><%= task.description %></td>
+                      <td><%= task.formatted_start_date %></td>
+                      <td><%= task.formatted_end_date %></td>
+                      <td><%= options(task) %></td>
+                    </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-      </br>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Finalizado?</th>
-            <th>Descrição</th>
-            <th>Data de inicio</th>
-            <th>Data de fim</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @multitasks.each do |task| %>
-              <tr id=<%= "sub_task"+task.id.to_s %> class=<%= "sub_task"+task.id.to_s %> >
-                <td><%= form_for(task) do |f| %>
-                  <%= f.check_box :finished %>
-                <% end %></td>
-                <td><%= task.description %></td>
-                <td><%= task.formatted_start_date %></td>
-                <td><%= task.formatted_end_date %></td>
-                <td><%= options(task) %></td>
-              </tr>
-          <% end %>
-        </tbody>
-      </table>
     </div>
   </div>

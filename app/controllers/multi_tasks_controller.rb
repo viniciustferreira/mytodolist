@@ -14,7 +14,6 @@ class MultiTasksController < ApplicationController
     #   { task: task, subtasks: @subtasks.select { |sub| sub.parent == task.id.to_s || nil  } }
     # end
     respond_to do |format|
-      format.js { render :index }
       format.html
     end
   end

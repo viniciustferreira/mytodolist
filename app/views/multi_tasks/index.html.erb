@@ -31,19 +31,12 @@
               <td><%= multitask.formatted_start_date %></td>
               <td><%= multitask.formatted_end_date %></td>
               <td><%= options(multitask) %></td>
-              <td><%= link_to "sub-tarefa", "", onclick: "edit();", class: "btn btn-primary" %></td>
-              <div id="dialog" title="Basic dialog">
-                <%= render partial: "multi_tasks" %>
-              </div>
+              <td><%= link_to "sub-tarefa", "", id: "sub-tarefa", class: "btn btn-primary", data: { toggle: "modal", target: "sub-task-modal" } %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
+    <%= render partial: "multi_tasks" %>
   </div>
 </div>
-<script>
-  function edit(){
-    $("#dialog").dialog();
-  };
-</script>
