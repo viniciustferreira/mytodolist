@@ -31,12 +31,12 @@
               <td><%= multitask.formatted_start_date %></td>
               <td><%= multitask.formatted_end_date %></td>
               <td><%= options(multitask) %></td>
-              <td><%= link_to "sub-tarefa", "", id: "sub-tarefa", class: "btn btn-primary", data: { toggle: "modal", target: "sub-task-modal" } %></td>
+              <td><%= button_tag "sub-tarefas", id: "sub-tarefa", type: "button", class: "btn btn-primary", data: { toggle: "modal", target: "#sub-task-modal" } %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
-    <%= render partial: "multi_tasks" %>
   </div>
 </div>
+<%= render partial: "multi_tasks" %>
